@@ -1,0 +1,72 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+  </button>
+  <span>PERUMONEY</span>
+  <span class="example-spacer"></span>
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="onLogout()"
+    style="letter-spacing: 0px"
+  >
+    Cerrar Sesión
+  </button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" mode="side">
+    <button
+      mat-button
+      [routerLink]="['/dashboard']"
+      class="menu-button"
+      (click)="sidenav.toggle()"
+    >
+      <span class="material-symbols-outlined"> dashboard </span>
+      Dashboard
+    </button>
+
+    <button
+      mat-button
+      [routerLink]="['/dashboard/customers']"
+      class="menu-button"
+      (click)="sidenav.toggle()"
+    >
+      <span class="material-symbols-outlined">account_circle</span>
+      Clientes
+    </button>
+
+    <button
+      mat-button
+      [routerLink]="['/dashboard/products']"
+      class="menu-button"
+      (click)="sidenav.toggle()"
+    >
+      <span class="material-symbols-outlined">
+        featured_seasonal_and_gifts
+      </span>
+      Premios
+    </button>
+
+    <button
+      mat-button
+      [routerLink]="['/dashboard/customers']"
+      class="menu-button"
+      (click)="sidenav.toggle()"
+    >
+      <span class="material-symbols-outlined">
+fact_check
+</span>
+      Reportes
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

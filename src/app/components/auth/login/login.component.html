@@ -1,0 +1,61 @@
+<div>
+  <!-- loading -->
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <!-- / loading -->
+
+  <div class="form">
+    <div class="title">
+      <h2>{{ title }}</h2>
+      <p>
+        ¿No tienes una cuenta?
+        <a href="https://wa.me/51944575799" target="_blank">Solicitalo aquí</a>
+      </p>
+    </div>
+
+    <!-- form -->
+    <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+      <!-- username -->
+      <mat-form-field appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <input type="text" required matInput formControlName="username" />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error>Este campo es requerido.</mat-error>
+      </mat-form-field>
+      <!-- / username -->
+
+      <!-- password -->
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input
+          [type]="hide ? 'password' : 'text'"
+          required
+          matInput
+          formControlName="password"
+        />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="togglePasswordVisibility()"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error>Este campo es requerido.</mat-error>
+      </mat-form-field>
+      <!-- / password -->
+
+      <!-- button -->
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="dev-login_button"
+        [disabled]="loading"
+      >
+        Ingresar
+      </button>
+      <!-- / button -->
+    </form>
+    <!-- / form -->
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 65px);
+}
+
+mat-sidenav {
+  width: 200px;
+  text-align: center;
+}
+
+.menu-button {
+  width: 100%;
+  height: 55px;
+}
