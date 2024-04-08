@@ -11,10 +11,10 @@ import { DashboardComponent } from './dashboard.component';
 import { CustomerListComponent } from './customers/customer-list/customer-list.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
-import { CategoriesComponent } from './categories/categories.component';
+import { CategoryComponent } from './category/category.component';
 import { ItemsComponent } from './items/items.component';
-import { CategoriesListComponent } from './categories/categories-list/categories-list.component';
-import { CategoriesAddOrEditComponent } from './categories/categories-add-or-edit/categories-add-or-edit.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CategoryCreateEdit } from './category/category-create-edit/category-create-edit.component';
 
 
 @NgModule({
@@ -27,10 +27,10 @@ import { CategoriesAddOrEditComponent } from './categories/categories-add-or-edi
     CustomerListComponent,
     ProductsComponent,
     ProductListComponent,
-    CategoriesComponent,
+    CategoryComponent,
     ItemsComponent,
-    CategoriesListComponent,
-    CategoriesAddOrEditComponent
+    CategoryListComponent,
+    CategoryCreateEdit
   ],
   imports: [
     CommonModule,
