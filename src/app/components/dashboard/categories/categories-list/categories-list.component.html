@@ -1,0 +1,105 @@
+<div class="main">
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <mat-card style="background-color: #f5f5f5">
+    <mat-card-header>
+      <mat-card-title style="color: #969696">Tabla {{ title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="display: flex">
+      <!-- Filter -->
+      <mat-form-field appearance="fill">
+        <mat-label>Buscar aquí...</mat-label>
+        <input type="text" matInput (keyup)="applyFilter($event)" #input />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="(onSearch)"
+          color="primary"
+        >
+          <span class="material-symbols-outlined"> search </span>
+        </button>
+      </mat-form-field>
+      <!-- / Filter -->
+      <div class="example-spacer"></div>
+      <div>
+        <button
+          mat-mini-fab
+          color="primary"
+          class="button-action"
+          matTooltip="Agregar {{ title }}"
+          (click)="dialogAddOrEdit()"
+        >
+          <span class="material-symbols-outlined"> add </span>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          class="button-action"
+          matTooltip="Filtrar Columna"
+        >
+          <span class="material-symbols-outlined"> visibility </span>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          class="button-action"
+          matTooltip="Eliminar {{ title }}"
+        >
+          <span class="material-symbols-outlined"> delete </span>
+        </button>
+        <button
+          mat-mini-fab
+          color="primary"
+          class="button-action"
+          matTooltip="Reportes"
+        >
+          <span class="material-symbols-outlined"> more_vert </span>
+        </button>
+      </div>
+    </mat-card-content>
+
+    <mat-card-content>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Categoria</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Acción</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <a
+                class="pointer"
+                matTooltip="Editar {{ title }}"
+                style="cursor: pointer; margin-right: 10px"
+                (click)="dialogAddOrEdit(element.item_category_id)"
+              >
+                <mat-icon color="primary">edit</mat-icon>
+              </a>
+
+              <a
+                (click)="deleteCategory(element.item_category_id)"
+                class="pointer"
+                matTooltip="Eliminar {{ title }}"
+                style="cursor: pointer; margin-left: 10px"
+              >
+                <mat-icon color="primary">delete</mat-icon>
+              </a>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
