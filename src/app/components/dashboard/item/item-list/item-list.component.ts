@@ -4,39 +4,39 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ICategory } from 'src/app/interfaces/category.interface';
-import { ItemCategoryService } from 'src/app/services/item-category.service';
-import { CategoryCreateEditComponent } from '../category-create-edit/category-create-edit.component';
+import { ItemCreateEditComponent } from '../item-create-edit/item-create-edit.component';
+import { IItem } from 'src/app/interfaces/item.interface';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
-  selector: 'app-category-list',
-  templateUrl: './category-list.component.html',
-  styleUrls: ['./category-list.component.scss']
+  selector: 'app-item-list',
+  templateUrl: './item-list.component.html',
+  styleUrls: ['./item-list.component.scss']
 })
-export class CategoryListComponent implements OnInit {
+export class ItemListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  title: string = 'Categoria ';
-  listRecords: ICategory[] = [];
+  title: string = 'Item ';
+  listRecords: IItem[] = [];
   loading: boolean = false;
 
-  displayedColumns: string[] = ['index', 'name', 'status', 'actions'];
-  dataSource!: MatTableDataSource<ICategory>;
+  displayedColumns: string[] = ['index', 'item_category_id', 'name', 'description', 'status', 'actions'];
+  dataSource!: MatTableDataSource<IItem>;
 
   constructor(
-    private _itemCategory: ItemCategoryService,
+    private _itemService: ItemService,
     private _dialog: MatDialog,
     private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-    this.loadCategories();
+    this.loadItems();
   }
 
-  loadCategories() {
+  loadItems() {
     this.loading = true;
-    this._itemCategory.getRecords().subscribe((data: any) => {
+    this._itemService.getRecords().subscribe((data: any) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -45,31 +45,31 @@ export class CategoryListComponent implements OnInit {
   }
 
   dialogAddOrEdit(id?: string) {
-    const dialogRef = this._dialog.open(CategoryCreateEditComponent, {
+    const dialogRef = this._dialog.open(ItemCreateEditComponent, {
       width: '350px',
       disableClose: true,
       data: {
-        item_category_id: id,
+        item_id: id,
       }
     });
 
     dialogRef.afterClosed().subscribe((data: any) => {
       if (data) {
-        this.loadCategories();
+        this.loadItems();
       }
     });
   }
 
-  deleteCategory(id: string) {
+  deleteItem(id: string) {
     this.loading = true;
-    this._itemCategory.deleteRecord(id).subscribe((data) => {
+    this._itemService.deleteRecord(id).subscribe((data) => {
       this._snackBar.open(`${this.title} eliminada`, 'Cerrar', {
         duration: 2000,
         horizontalPosition: 'center',
         verticalPosition: 'top'
       });
       this.loading = false;
-      this.loadCategories();
+      this.loadItems();
     })
   }
 

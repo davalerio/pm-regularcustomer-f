@@ -66,10 +66,19 @@
             <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
           </ng-container>
         
+          <ng-container matColumnDef="item_category_id">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Categoria</th>
+            <td mat-cell *matCellDef="let element">{{ element.item_category_id }}</td>
+          </ng-container>
 
           <ng-container matColumnDef="name">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Categoria</th>
             <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Descripcion</th>
+            <td mat-cell *matCellDef="let element">{{ element.description }}</td>
           </ng-container>
 
           <ng-container matColumnDef="status">
@@ -84,13 +93,13 @@
                 class="pointer"
                 matTooltip="Editar {{ title }}"
                 style="cursor: pointer; margin-right: 10px"
-                (click)="dialogAddOrEdit(element.item_category_id)"
+                (click)="dialogAddOrEdit(element.item_id)"
               >
                 <mat-icon color="primary">edit</mat-icon>
               </a>
 
               <a
-                (click)="deleteCategory(element.item_category_id)"
+                (click)="deleteItem(element.item_id)"
                 class="pointer"
                 matTooltip="Eliminar {{ title }}"
                 style="cursor: pointer; margin-left: 10px"

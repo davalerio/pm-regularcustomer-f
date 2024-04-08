@@ -37,7 +37,11 @@ export class LoginComponent {
   onFormSubmit() {
     this.loading = true;
     this._router.navigate(['/dashboard']);
-    this._snackBar.open('Bienvenido', 'Ok');
+    this._snackBar.open('Bienvenido', 'Cerrar', {
+      duration: 2000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+    });
     this.loading = false;
   }
 }
