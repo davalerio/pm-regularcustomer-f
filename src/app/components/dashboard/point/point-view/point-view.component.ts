@@ -10,9 +10,10 @@ import { PointService } from 'src/app/services/point.service';
 })
 export class PointViewComponent implements OnInit {
 
-  title: string = 'Puntos del cliente';
+  title: string = 'Puntos Acumulados';
   loading: boolean = false;
   form!: FormGroup;
+  inputDisabled: boolean = true;
   pointsCustomer = signal<any>({});
 
   constructor(private _formBuilder: FormBuilder, private _activedRoute: ActivatedRoute, private _pointService: PointService, private _router: Router) {
@@ -28,7 +29,7 @@ export class PointViewComponent implements OnInit {
       phone: [''],
       ubigeo: [''],
       address: [''],
-      total_points: ['']
+      total_points: ['99999'],
     });
   }
 
@@ -36,7 +37,6 @@ export class PointViewComponent implements OnInit {
     this._activedRoute.params.subscribe(params => {
       this._pointService.getPointsDocument(params['document']).subscribe({
         next: ((res: any) => {
-          console.log(res)
           this.pointsCustomer.set((res));
         })
       })
