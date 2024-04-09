@@ -20,6 +20,7 @@ import { ItemCreateEditComponent } from './item/item-create-edit/item-create-edi
 import { PointComponent } from './point/point.component';
 import { PointListComponent } from './point/point-list/point-list.component';
 import { PointCreateComponent } from './point/point-create/point-create.component';
+import { PointViewComponent } from './point/point-view/point-view.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { PointCreateComponent } from './point/point-create/point-create.componen
     ItemCreateEditComponent,
     PointComponent,
     PointListComponent,
-    PointCreateComponent
+    PointCreateComponent,
+    PointViewComponent
   ],
   imports: [
     CommonModule,
