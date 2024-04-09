@@ -65,6 +65,16 @@
             <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
           </ng-container>
 
+          <ng-container matColumnDef="fullname">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>
+              Nombre completo
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.firstname }} {{ element.second_name }}
+              {{ element.lastname }} {{ element.lastname_mother }}
+            </td>
+          </ng-container>
+
           <ng-container matColumnDef="type_document_id">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>
               Tipo documento
@@ -83,7 +93,9 @@
 
           <ng-container matColumnDef="points">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Puntos</th>
-            <td mat-cell *matCellDef="let element">{{ element.points }}</td>
+            <td mat-cell *matCellDef="let element">
+              {{ element.total_points }}
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="actions">

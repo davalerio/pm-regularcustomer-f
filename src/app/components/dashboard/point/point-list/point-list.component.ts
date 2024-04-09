@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { IPoint } from 'src/app/interfaces/point.interface';
+import { IPoint, IPointCustomer } from 'src/app/interfaces/point.interface';
 import { PointService } from 'src/app/services/point.service';
 
 @Component({
@@ -17,11 +17,11 @@ export class PointListComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   title: string = 'Puntos ';
-  listRecords: IPoint[] = [];
+  listRecords: IPointCustomer[] = [];
   loading: boolean = false;
 
-  displayedColumns: string[] = ['index', 'type_document_id', 'document', 'points', 'actions'];
-  dataSource!: MatTableDataSource<IPoint>;
+  displayedColumns: string[] = ['index', 'fullname', 'type_document_id', 'document', 'points', 'actions'];
+  dataSource!: MatTableDataSource<IPointCustomer>;
 
   constructor(
     private _pointService: PointService,
@@ -35,7 +35,7 @@ export class PointListComponent implements OnInit {
 
   loadPoints() {
     this.loading = true;
-    this._pointService.getRecords().subscribe((data: any) => {
+    this._pointService.getPointsCutomers().subscribe((data: any) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPoint } from '../interfaces/point.interface';
 import { environment } from '../../environments/environment.development';
+import { IPoint, IPointCustomer } from '../interfaces/point.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,12 @@ export class PointService {
     return this._httpClient.get<IPoint[]>(`${this.endpoint}/${this.route}`);
   }
 
-  getRecordDocument(document: number): Observable<IPoint> {
-    return this._httpClient.post<IPoint>(`${this.endpoint}/${this.route}/document}`, document);
+  getPointsCutomers(): Observable<IPointCustomer[]> {
+    return this._httpClient.get<IPointCustomer[]>(`${this.endpoint}/${this.route}/customers`);
+  }
+
+  getPointsDocument(document: number): Observable<IPoint> {
+    return this._httpClient.get<IPoint>(`${this.endpoint}/${this.route}/document/${document}`);
   }
 
   createRecord(formValues: IPoint): Observable<IPoint> {
