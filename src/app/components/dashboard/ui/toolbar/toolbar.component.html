@@ -3,11 +3,14 @@
     mat-icon-button
     *ngIf="sidenav.mode === 'over'"
     (click)="sidenav.toggle()"
+    class="menu-icon"
   >
-    <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
-    <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    <span class="material-symbols-rounded" *ngIf="!sidenav.opened"> menu </span>
+    <span class="material-symbols-rounded" *ngIf="sidenav.opened"> close </span>
   </button>
-  <span>PERUMONEY</span>
+  <span *ngIf="sidenav.opened">PERUMONEY</span>
+  <span *ngIf="!sidenav.opened">PM</span>
+
   <span class="example-spacer"></span>
   <button
     mat-raised-button
@@ -26,7 +29,7 @@
       class="menu-button"
       (click)="sidenav.toggle()"
     >
-      <span class="material-symbols-outlined"> dashboard </span>
+      <span class="material-symbols-rounded"> dashboard </span>
       Dashboard
     </button>
 
@@ -36,7 +39,7 @@
       class="menu-button"
       (click)="sidenav.toggle()"
     >
-      <span class="material-symbols-outlined"> category </span>
+      <span class="material-symbols-rounded"> category </span>
       Categorias
     </button>
 
@@ -46,9 +49,7 @@
       class="menu-button"
       (click)="sidenav.toggle()"
     >
-      <span class="material-symbols-outlined">
-        featured_seasonal_and_gifts
-      </span>
+      <span class="material-symbols-rounded">featured_seasonal_and_gifts </span>
       Premios
     </button>
 
@@ -58,7 +59,7 @@
       class="menu-button"
       (click)="sidenav.toggle()"
     >
-      <span class="material-symbols-outlined">account_circle</span>
+      <span class="material-symbols-rounded">account_circle</span>
       Clientes
     </button>
 
@@ -68,7 +69,7 @@
       class="menu-button"
       (click)="sidenav.toggle()"
     >
-      <span class="material-symbols-outlined"> person_celebrate </span>
+      <span class="material-symbols-rounded"> person_celebrate </span>
       Puntos
     </button>
 
@@ -78,7 +79,7 @@
       class="menu-button"
       (click)="sidenav.toggle()"
     >
-      <span class="material-symbols-outlined"> fact_check </span>
+      <span class="material-symbols-rounded"> fact_check </span>
       Reportes
     </button>
   </mat-sidenav>

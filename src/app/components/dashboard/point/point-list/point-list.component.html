@@ -7,18 +7,23 @@
     <mat-card-content>
       <!-- Filter -->
       <mat-form-field appearance="fill">
-        <mat-label>Buscar aquí...</mat-label>
-        <input type="text" matInput (keyup)="applyFilter($event)" #input />
-        <button
-          type="button"
-          mat-icon-button
-          matSuffix
-          (click)="(onSearch)"
-          color="primary"
-        >
-          <span class="material-symbols-outlined"> search </span>
-        </button>
+        <mat-label>Buscar ...</mat-label>
+        <input
+          type="text"
+          matInput
+          (keyup)="applyFilter($event)"
+          #input
+          matTooltip="Ingrese un nombre o documento"
+        />
       </mat-form-field>
+      <button
+        type="button"
+        mat-mini-fab
+        color="accent"
+        style="margin-left: 10px"
+      >
+        <span class="material-symbols-rounded"> manage_search </span>
+      </button>
       <!-- / Filter -->
       <div class="example-spacer"></div>
       <div>

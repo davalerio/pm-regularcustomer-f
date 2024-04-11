@@ -1,8 +1,86 @@
 mat-card {
   background-color: #f5f5f5;
- }
- mat-card-title {
+}
+
+mat-card-title {
   font-size: 20px;
   font-weight: bold;
   color: #969696;
- }
+}
+
+mat-card-content {
+  padding: 0 0;
+  background: #f5f5f5;
+}
+
+.mat-mdc-card-content:last-child {
+  padding-bottom: 0;
+}
+
+.mat-mdc-card-content:first-child {
+  padding-top: 0;
+}
+
+.info {
+  padding: 16px 10px;
+  background: linear-gradient(#673ab7, #ffd740);
+}
+
+.info-point {
+  padding: 16px 10px;
+}
+
+.title-name {
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+
+  h1 {
+    padding: 5px;
+    font-size: 30px;
+    color: #e5e7e9;
+    font-weight: bold;
+  }
+
+  .material-symbols-rounded {
+    font-size: 40px !important;
+    color: #e5e7e9;
+  }
+}
+
+.point {
+  padding: 16px 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+}
+
+.point-detail {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.point-header {
+  margin-top: 20px;
+  // display: flex;
+  justify-content: center;
+}
+
+.point-icons {
+  font-size: 30px;
+}
+
+.point-number {
+  font-size: 30px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  background: lightblue;
+  width: 600px;
+  margin: auto;
+}

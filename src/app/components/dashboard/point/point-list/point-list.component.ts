@@ -52,5 +52,4 @@ export class PointListComponent implements OnInit {
     }
   }
 
-  onSearch() { }
 }

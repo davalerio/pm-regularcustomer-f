@@ -1,0 +1,143 @@
+<form [formGroup]="form" (ngSubmit)="formAddOrEdit()">
+  <mat-dialog-content>
+    <div class="row">
+      <div class="column">
+        <h2 class="form-title">Información del cliente</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <!-- Primer nombre -->
+        <div class="form-field">
+          <label for="firstname" class="form-label">Primer nombre</label>
+          <input
+            type="text"
+            class="form-input"
+            formControlName="firstname"
+            [value]=""
+            [readOnly]="isReadOnly"
+          />
+        </div>
+        <!-- / Primer nombre -->
+        <!-- Segundo nombre -->
+        <div class="form-field">
+          <label for="second_name" class="form-label">Segundo nombre</label>
+          <input type="text" class="form-input" formControlName="second_name" />
+        </div>
+        <!-- / Segundo nombre -->
+      </div>
+      <div class="column">
+        <!-- Apellido paterno -->
+        <div class="form-field">
+          <label for="lastname" class="form-label">Apellido paterno</label>
+          <input type="text" class="form-input" formControlName="lastname" />
+        </div>
+        <!-- / Apellido paterno -->
+        <!-- Apellido materno -->
+        <div class="form-field">
+          <label for="lastname_mother" class="form-label"
+            >Apellido materno</label
+          >
+          <input
+            type="text"
+            class="form-input"
+            formControlName="lastname_mother"
+          />
+        </div>
+        <!-- / Apellido Materno -->
+      </div>
+      <div class="column">
+        <!-- Tipo documento -->
+        <div class="form-field">
+          <label for="type_document" class="form-label">Tipo documento</label>
+          <input
+            type="text"
+            class="form-input"
+            formControlName="type_document"
+          />
+        </div>
+        <!-- / Tipo documento -->
+        <!-- Numero documento -->
+        <div class="form-field">
+          <label for="document" class="form-label">Número documento</label>
+          <input type="text" class="form-input" formControlName="document" />
+        </div>
+        <!-- / Numero documento -->
+      </div>
+      <div class="column">
+        <!-- Fecha nacimiento -->
+        <div class="form-field">
+          <label for="birthdate" class="form-label">Cumpleaños</label>
+          <input type="text" class="form-input" formControlName="birthdate" />
+        </div>
+        <!-- / Fecha nacimiento -->
+        <!-- Telefono -->
+        <div class="form-field">
+          <label for="phone" class="form-label">Celular</label>
+          <input type="text" class="form-input" formControlName="phone" />
+        </div>
+        <!-- / Telefono -->
+      </div>
+      <div class="column">
+        <!-- Correo electronico-->
+        <div class="form-field tag-width-full">
+          <label for="email" class="form-label tag-width-full"
+            >Correo electrónico</label
+          >
+          <input
+            type="text"
+            class="form-input tag-width-full"
+            formControlName="email"
+          />
+        </div>
+        <!-- / Correo electronico-->
+      </div>
+      <div class="column">
+        <!-- Ubigeo -->
+        <div class="form-field tag-width-full">
+          <label for="ubigeo" class="form-label tag-width-full">Ubigeo</label>
+          <input
+            type="text"
+            class="form-input tag-width-full"
+            formControlName="ubigeo"
+          />
+        </div>
+        <!-- / Ubigeo -->
+      </div>
+      <div class="column">
+        <!-- Direccion -->
+        <div class="form-field tag-width-full">
+          <label for="address" class="form-label tag-width-full"
+            >Dirección</label
+          >
+          <input
+            type="text"
+            class="form-input tag-width-full"
+            formControlName="address"
+          />
+        </div>
+        <!-- / Direccion -->
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      type="button"
+      color="accent"
+      mat-raised-button
+      (click)="formClose()"
+      [disabled]="loading"
+    >
+      Cancelar
+    </button>
+    <button
+      type="submit"
+      color="primary"
+      mat-raised-button
+      [disabled]="loading"
+      [disabled]="!form.valid"
+    >
+      Guardar
+    </button>
+  </mat-dialog-actions>
+</form>

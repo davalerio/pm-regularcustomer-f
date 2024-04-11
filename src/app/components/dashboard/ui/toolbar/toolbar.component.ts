@@ -15,15 +15,15 @@ export class ToolbarComponent {
     private _router: Router,
     private _observer: BreakpointObserver,
     private _changeDetector: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngAfterViewInit() {
-    this._observer.observe(['(min-width: 1330px)']).subscribe((data: any) => {
+    this._observer.observe(['(max-width: 1000px)']).subscribe((data: any) => {
       if (data.matches) {
         this.sidenav.mode = 'over';
         this.sidenav.close();
       } else {
-        this.sidenav.mode = 'over';
+        this.sidenav.mode = 'side';
         this.sidenav.open();
       }
     });

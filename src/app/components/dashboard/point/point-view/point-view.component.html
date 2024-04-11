@@ -1,268 +1,98 @@
 <div class="main">
   <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   <mat-card>
-    <mat-card-header>
-      <mat-card-title> {{ title }}</mat-card-title>
-    </mat-card-header>
     <mat-card-content>
-      <div class="example-spacer"></div>
-      <!-- Barra de acciones -->
-      <!-- <div>
-        <button
-          mat-mini-fab
-          color="primary"
-          class="button-action"
-          matTooltip="Agregar {{ title }}"
-        >
-          <span class="material-symbols-outlined"> add </span>
-        </button>
-        <button
-          mat-mini-fab
-          color="primary"
-          class="button-action"
-          matTooltip="Filtrar Columna"
-        >
-          <span class="material-symbols-outlined"> visibility </span>
-        </button>
-        <button
-          mat-mini-fab
-          color="primary"
-          class="button-action"
-          matTooltip="Eliminar {{ title }}"
-        >
-          <span class="material-symbols-outlined"> delete </span>
-        </button>
-        <button
-          mat-mini-fab
-          color="primary"
-          class="button-action"
-          matTooltip="Reportes"
-        >
-          <span class="material-symbols-outlined"> more_vert </span>
-        </button>
-      </div> -->
-      <!-- / Barra de acciones -->
-    </mat-card-content>
-    <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="formAddOrEdit()">
-        <mat-dialog-content>
-          <div class="row">
-            <div class="colum">
-              <!-- Total puntos -->
-              <mat-form-field appearance="outline">
-                <mat-label>Total Puntos</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  style="
-                    height: 80px;
-                    text-align: center;
-                    font-size: 3em;
-                    padding: 0;
-                    margin: 0;
-                  "
-                  formControlName="total_points"
-                  [value]="pointsCustomer().total_points"
-                />
-                <mat-error
-                  *ngIf="form.get('total_points')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <div class="example-spacer"></div>
-              <!-- / Total puntos -->
-
-              <!-- Primer nombre -->
-              <mat-form-field appearance="fill">
-                <mat-label>Primer Nombre</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="firstname"
-                  [value]="pointsCustomer().firstname"
-                  readonly
-                />
-                <mat-error *ngIf="form.get('firstname')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Primer nombre -->
-              <!-- Segundo nombre -->
-              <mat-form-field appearance="fill">
-                <mat-label>Segundo Nombre</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="second_name"
-                  [value]="pointsCustomer().second_name"
-                  readonly
-                />
-                <mat-error *ngIf="form.get('second_name')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Segundo nombre -->
-              <!-- Apellido paterno -->
-              <mat-form-field appearance="fill">
-                <mat-label>Apellido Paterno</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="lastname"
-                  [value]="pointsCustomer().lastname"
-                  readonly
-                />
-                <mat-error *ngIf="form.get('lastname')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Apellido paterno -->
-              <!-- Apellido materno -->
-              <mat-form-field appearance="fill">
-                <mat-label>Apellido Materno</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="lastname_mother"
-                  [value]="pointsCustomer().lastname_mother"
-                  readonly
-                />
-                <mat-error
-                  *ngIf="form.get('lastname_mother')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Apellido Materno -->
-              <!-- Tipo documento -->
-              <mat-form-field appearance="fill">
-                <mat-label>Tipo de Documento</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="type_document"
-                  [value]="pointsCustomer().type_document"
-                  readonly
-                />
-                <mat-error
-                  *ngIf="form.get('type_document')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Tipo documento -->
-              <!-- Numero documento -->
-              <mat-form-field appearance="fill">
-                <mat-label>Numero de Documento</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="document"
-                  [value]="pointsCustomer().document"
-                  readonly
-                />
-                <mat-error *ngIf="form.get('document')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Numero documento -->
-              <!-- Fecha nacimiento -->
-              <mat-form-field appearance="fill">
-                <mat-label>Fecha de Nacimiento</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="birthdate"
-                  [value]="pointsCustomer().birthdate | date : 'dd/MM/yyyy'"
-                  readonly
-                />
-                <mat-error *ngIf="form.get('birthdate')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Fecha nacimiento -->
-              <!-- Correo electronico-->
-              <mat-form-field appearance="fill">
-                <mat-label>Correo electrónico</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="email"
-                  [value]="pointsCustomer().email"
-                  readonly
-                />
-                <mat-error *ngIf="form.get('email')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Correo electronico-->
-              <!-- Telefono -->
-              <mat-form-field appearance="fill">
-                <mat-label>Celular</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="phone"
-                  [value]="pointsCustomer().phone"
-                  readonly
-                />
-                <mat-error *ngIf="form.get('phone')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Telefono -->
-              <!-- Ubigeo -->
-              <mat-form-field appearance="fill">
-                <mat-label>Ubigeo</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="ubigeo"
-                  [value]="pointsCustomer().ubigeo"
-                  readonly
-                />
-                <mat-error *ngIf="form.get('ubigeo')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Ubigeo -->
-              <!-- Direccion -->
-              <mat-form-field appearance="fill">
-                <mat-label>Dirección</mat-label>
-                <input
-                  type="text"
-                  matInput
-                  formControlName="address"
-                  [value]="pointsCustomer().address"
-                  readonly
-                />
-                <mat-error *ngIf="form.get('address')?.hasError('required')"
-                  >Este campo es requerido.</mat-error
-                >
-              </mat-form-field>
-              <!-- / Direccion -->
+      <div class="info">
+        <div class="info-point">
+          <div class="title-name">
+            <span class="material-symbols-rounded"> account_circle </span>
+            <h1>Daniel Valerio</h1>
+          </div>
+          <div class="point">
+            <div class="point-detail">
+              <div class="point-header">
+                <span class="material-symbols-rounded point-icons">
+                  social_leaderboard
+                </span>
+                <p class="point-title">Puntos disponibles</p>
+              </div>
+              <p class="point-number">
+                <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+                {{ pointsCustomer().total_points | number }}
+              </p>
+            </div>
+            <div class="point-detail">
+              <div class="point-header">
+                <span class="material-symbols-rounded point-icons">
+                  workspace_premium
+                </span>
+                <p class="point-title">Puntos de hoy</p>
+              </div>
+              <p class="point-number">{{ 0 | number }}</p>
+            </div>
+            <div class="point-detail">
+              <div class="point-header">
+                <span class="material-symbols-rounded point-icons">
+                  featured_seasonal_and_gifts
+                </span>
+                <p class="point-title">Puntos canjeados</p>
+              </div>
+              <p class="point-number">{{ 0 | number }}</p>
             </div>
           </div>
-        </mat-dialog-content>
-        <mat-dialog-actions align="end">
-          <button
-            type="button"
-            color="accent"
-            mat-raised-button
-            (click)="formClose()"
-            [disabled]="loading"
-          >
-            Cancelar
-          </button>
-          <button
-            type="submit"
-            color="primary"
-            mat-raised-button
-            [disabled]="loading"
-            [disabled]="!form.valid"
-          >
-            Guardar
-          </button>
-        </mat-dialog-actions>
-      </form>
+        </div>
+      </div>
+      <div class="mi-menu">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="dialogProfile(this.form.value.document)"
+          matTooltip="Ver información del cliente"
+        >
+          <span class="material-symbols-rounded"> person_pin </span>
+          Perfil
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="openDialog()"
+          matTooltip="Canjear producto(s)"
+        >
+          <span class="material-symbols-rounded">
+            featured_seasonal_and_gifts
+          </span>
+          Canjear
+        </button>
+      </div>
+    </mat-card-content>
+
+    <!-- Tabla de informacion de puntos -->
+    <mat-card-content>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="index">
+            <th mat-header-cell *matHeaderCellDef>No.</th>
+            <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="document">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>Documento</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.document }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 20]"
+          showFirstLastButtons
+          aria-label="Select page of periodic elements"
+        >
+        </mat-paginator>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
