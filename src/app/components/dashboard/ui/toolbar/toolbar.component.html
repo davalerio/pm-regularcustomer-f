@@ -4,6 +4,7 @@
     *ngIf="sidenav.mode === 'over'"
     (click)="sidenav.toggle()"
     class="menu-icon"
+    matTooltip="Menú principal"
   >
     <span class="material-symbols-rounded" *ngIf="!sidenav.opened"> menu </span>
     <span class="material-symbols-rounded" *ngIf="sidenav.opened"> close </span>
@@ -16,72 +17,94 @@
     mat-raised-button
     color="accent"
     (click)="onLogout()"
+    matTooltip="Salir del sistema"
     style="letter-spacing: 0px"
   >
-    Cerrar Sesión
+    Cerrar sesión
   </button>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" mode="side">
-    <button
-      mat-button
-      [routerLink]="['/dashboard']"
-      class="menu-button"
-      (click)="sidenav.toggle()"
-    >
-      <span class="material-symbols-rounded"> dashboard </span>
-      Dashboard
+    <!-- dashboard -->
+    <button mat-button [routerLink]="['/dashboard']" class="sidenav_button">
+      <div class="sidenav_button-text">
+        <span class="material-symbols-rounded sidenav_button-icon">
+          dashboard
+        </span>
+        Dashboard
+      </div>
     </button>
-
+    <!-- /dashboard -->
+    <!-- categories -->
     <button
       mat-button
       [routerLink]="['/dashboard/categories']"
-      class="menu-button"
-      (click)="sidenav.toggle()"
+      class="sidenav_button"
     >
-      <span class="material-symbols-rounded"> category </span>
-      Categorias
+      <div class="sidenav_button-text">
+        <span class="material-symbols-rounded sidenav_button-icon">
+          category
+        </span>
+        Categorias
+      </div>
     </button>
-
+    <!-- /categories -->
+    <!-- gif -->
     <button
       mat-button
       [routerLink]="['/dashboard/items']"
-      class="menu-button"
-      (click)="sidenav.toggle()"
+      class="sidenav_button"
     >
-      <span class="material-symbols-rounded">featured_seasonal_and_gifts </span>
-      Premios
+      <div class="sidenav_button-text">
+        <span class="material-symbols-rounded sidenav_button-icon"
+          >featured_seasonal_and_gifts
+        </span>
+        Premios
+      </div>
     </button>
-
+    <!-- /gif -->
+    <!-- customers -->
     <button
       mat-button
       [routerLink]="['/dashboard/customers']"
-      class="menu-button"
-      (click)="sidenav.toggle()"
+      class="sidenav_button"
     >
-      <span class="material-symbols-rounded">account_circle</span>
-      Clientes
+      <div class="sidenav_button-text">
+        <span class="material-symbols-rounded sidenav_button-icon"
+          >account_circle</span
+        >
+        Clientes
+      </div>
     </button>
-
+    <!-- /customers -->
+    <!-- points -->
     <button
       mat-button
       [routerLink]="['/dashboard/points']"
-      class="menu-button"
-      (click)="sidenav.toggle()"
+      class="sidenav_button"
     >
-      <span class="material-symbols-rounded"> person_celebrate </span>
-      Puntos
+      <div class="sidenav_button-text">
+        <span class="material-symbols-rounded sidenav_button-icon">
+          person_celebrate
+        </span>
+        Puntos
+      </div>
     </button>
-
+    <!-- /points -->
+    <!-- reports -->
     <button
       mat-button
-      [routerLink]="['/dashboard/customers']"
-      class="menu-button"
-      (click)="sidenav.toggle()"
+      [routerLink]="['/dashboard/reports']"
+      class="sidenav_button"
     >
-      <span class="material-symbols-rounded"> fact_check </span>
-      Reportes
+      <div class="sidenav_button-text">
+        <span class="material-symbols-rounded sidenav_button-icon">
+          fact_check
+        </span>
+        Reportes
+      </div>
     </button>
+    <!-- /reports -->
   </mat-sidenav>
   <mat-sidenav-content>
     <div>
