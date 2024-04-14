@@ -1,5 +1,9 @@
+<mat-progress-bar
+  *ngIf="loading"
+  mode="indeterminate"
+  color="primary"
+></mat-progress-bar>
 <div class="main">
-  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   <mat-card>
     <mat-card-content>
       <div class="info">
@@ -42,57 +46,126 @@
           </div>
         </div>
       </div>
-      <div class="mi-menu">
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="dialogProfile(this.form.value.document)"
-          matTooltip="Ver información del cliente"
-        >
-          <span class="material-symbols-rounded"> person_pin </span>
-          Perfil
-        </button>
-        <button
-          mat-raised-button
-          color="accent"
-          (click)="openDialog()"
-          matTooltip="Canjear producto(s)"
-        >
-          <span class="material-symbols-rounded">
-            featured_seasonal_and_gifts
-          </span>
-          Canjear
-        </button>
-      </div>
-    </mat-card-content>
-
-    <!-- Tabla de informacion de puntos -->
-    <mat-card-content>
-      <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
-          <ng-container matColumnDef="index">
-            <th mat-header-cell *matHeaderCellDef>No.</th>
-            <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="document">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef>Documento</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.document }}
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-
-        <mat-paginator
-          [pageSizeOptions]="[5, 10, 20]"
-          showFirstLastButtons
-          aria-label="Select page of periodic elements"
-        >
-        </mat-paginator>
-      </div>
     </mat-card-content>
   </mat-card>
+  <!-- Tabla de informacion de puntos -->
+
+  <!-- <div class="mi-menu">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="dialogProfile(this.form.value.document)"
+      matTooltip="Ver información del cliente"
+    >
+      <span class="material-symbols-rounded"> person_pin </span>
+      Perfil
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="openDialog()"
+      matTooltip="Canjear producto(s)"
+    >
+      <span class="material-symbols-rounded">
+        featured_seasonal_and_gifts
+      </span>
+      Canjear
+    </button>
+  </div> -->
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="action-bar">
+          <div>
+            <button
+              type="button"
+              mat-icon-button
+              matSuffix
+              matTooltip="Agregar {{ title }}"
+              [disabled]="isDisabled"
+            >
+              <span class="material-symbols-rounded"> add_circle </span>
+            </button>
+
+            <button
+              type="button"
+              mat-icon-button
+              matSuffix
+              matTooltip="Filtrar columna"
+              [disabled]="isDisabled"
+            >
+              <span class="material-symbols-rounded"> visibility </span>
+            </button>
+
+            <button
+              type="button"
+              mat-icon-button
+              matSuffix
+              matTooltip="Eliminar"
+              [disabled]="isDisabled"
+            >
+              <span class="material-symbols-rounded"> delete </span>
+            </button>
+
+            <button
+              type="button"
+              mat-icon-button
+              matSuffix
+              matTooltip="Reportes"
+              [disabled]="isDisabled"
+            >
+              <span class="material-symbols-rounded"> more_vert </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-4">
+        <div class="table">
+          <div style="padding: 1.5rem">
+            <h3 class="font-weight-bold">{{ title }}</h3>
+          </div>
+          <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="document">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                Num. Documento
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.document }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acumulado">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                Acumulado
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.points > 0 ? element.points : "" }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="canjeado">
+              <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                Canjeado
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.points < 0 ? element.points : "" }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            showFirstLastButtons
+            aria-label="Select page of periodic elements"
+          >
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

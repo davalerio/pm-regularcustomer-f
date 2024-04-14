@@ -43,8 +43,10 @@ export class CategoryListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      console.log(data)
       this.loading = false;
       this.isDisabled = false;
+
     });
   }
 

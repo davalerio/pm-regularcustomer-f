@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { IPoint } from 'src/app/interfaces/point.interface';
+import { ICustomer } from 'src/app/interfaces/customer.interface';
 
 @Component({
   selector: 'app-point-view',
@@ -22,16 +23,18 @@ export class PointViewComponent implements OnInit {
   loading: boolean = false;
   form!: FormGroup;
   pointsCustomer = signal<any>({});
+  listPointsCustomer: ICustomer[] = [];
+  isDisabled: boolean = true;
 
-  displayedColumns: string[] = ['index', 'document'];
-  dataSource!: MatTableDataSource<IPoint>;
+  displayedColumns: string[] = ['document', 'acumulado', 'canjeado'];
+  dataSource!: MatTableDataSource<ICustomer>;
 
   constructor(
     private _dialog: MatDialog,
     private _formBuilder: FormBuilder,
     private _activedRoute: ActivatedRoute,
     private _pointService: PointService,
-    private _router: Router
+    private _router: Router,
   ) {
     this.form = this._formBuilder.group({
       firstname: [''],
@@ -45,20 +48,38 @@ export class PointViewComponent implements OnInit {
       phone: [''],
       ubigeo: [''],
       address: [''],
-      total_points: ['99999'],
+      total_points: [''],
     });
   }
 
   ngOnInit(): void {
+    this.loadPointsxCliente();
+    // this.loading = true;
+    // this._activedRoute.params.subscribe((params) => {
+    //   this._pointService.getPointsDocument(params['document']).subscribe({
+    //     next: (res: any) => {
+    //       this.pointsCustomer.set(res);
+    //       this.loading = false;
+    //     },
+    //   });
+    // });
+  }
+
+  loadPointsxCliente() {
     this.loading = true;
     this._activedRoute.params.subscribe((params) => {
-      this._pointService.getPointsDocument(params['document']).subscribe({
+      this._pointService.getRecords().subscribe({
         next: (res: any) => {
-          this.pointsCustomer.set(res);
+          this.listPointsCustomer = res.filter((item: any) => item.document === params['document']);
+          this.dataSource = new MatTableDataSource(this.listPointsCustomer);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          console.log(this.listPointsCustomer);
           this.loading = false;
-        },
-      });
-    });
+          this.isDisabled = false;
+        }
+      })
+    })
   }
 
   dialogProfile(document: string) {
