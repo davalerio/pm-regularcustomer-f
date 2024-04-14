@@ -9,6 +9,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MaterialModule } from './shared/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [MatPaginatorIntl],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

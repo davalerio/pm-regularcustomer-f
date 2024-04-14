@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -27,11 +27,13 @@ export class CategoryListComponent implements OnInit {
   constructor(
     private _itemCategory: ItemCategoryService,
     private _dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public _matPaginatorIntl: MatPaginatorIntl
   ) { }
 
   ngOnInit(): void {
     this.loadCategories();
+    this._matPaginatorIntl.itemsPerPageLabel = 'Registros por página';
   }
 
   loadCategories() {
