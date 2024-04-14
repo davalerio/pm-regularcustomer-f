@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   title: string = 'Cliente Frecuente';
-  loading: boolean = false;
+  loading: boolean = true;
   hide: boolean = true;
   form: FormGroup;
 

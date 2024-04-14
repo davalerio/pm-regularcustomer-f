@@ -2,6 +2,14 @@
   flex: 1 1 auto;
 }
 
+.main-panel {
+  min-height: calc(100vh - 65px);
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+  width: 100%;
+}
+
 .menu-icon {
   margin-right: 6px;
 }

@@ -1,61 +1,105 @@
-<div>
-  <!-- loading -->
-  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-  <!-- / loading -->
+<div class="container">
+  <div class="row vh-100 justify-content-center align-items-center">
+    <div class="col-auto p-5">
+      <!-- loading -->
+      <!-- <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar> -->
+      <!-- / loading -->
+      <div class="login-form">
+        <!-- form -->
+        <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
+          <span class="login-form-title">Cliente frecuente</span>
+          <div class="wrap-input">
+            <!-- username -->
+            <input
+              type="text"
+              class="input-text"
+              formControlName="username"
+              placeholder="Usuario"
+            />
+            <span class="focus-input"></span>
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Usuario</mat-label>
+              <input
+                type="text"
+                class="input-text"
+                required
+                matInput
+                formControlName="username"
+              />
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error>Este campo es requerido.</mat-error>
+            </mat-form-field> -->
+            <!-- / username -->
+          </div>
 
-  <div class="form">
-    <div class="title">
-      <h2>{{ title }}</h2>
-      <p>
-        ¿No tienes una cuenta?
-        <a href="https://wa.me/51944575799" target="_blank">Solicitalo aquí</a>
-      </p>
+          <!-- password -->
+          <div class="wrap-input">
+            <!-- username -->
+            <input
+              type="text"
+              class="input-text"
+              formControlName="password"
+              placeholder="Contraseña"
+            />
+            <span class="focus-input"></span>
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Usuario</mat-label>
+              <input
+                type="text"
+                class="input-text"
+                required
+                matInput
+                formControlName="username"
+              />
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error>Este campo es requerido.</mat-error>
+            </mat-form-field> -->
+            <!-- / username -->
+          </div>
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input
+              [type]="hide ? 'password' : 'text'"
+              required
+              matInput
+              formControlName="password"
+            />
+            <button
+              type="button"
+              mat-icon-button
+              matSuffix
+              (click)="togglePasswordVisibility()"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+            <mat-error>Este campo es requerido.</mat-error>
+          </mat-form-field> -->
+          <!-- / password -->
+
+          <div class="form-text">
+            <label class="form-label">
+              Si no tienes una cuenta solicitalo
+              <a href="https://wa.me/51944575799" class="link">aquí</a>.</label
+            >
+          </div>
+
+          <!-- button -->
+          <div class="form-button">
+            <button class="button">Iniciar Sesión</button>
+          </div>
+          <!-- <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            class="dev-login_button"
+            [disabled]="loading"
+          >
+            Ingresar
+          </button> -->
+          <!-- / button -->
+        </form>
+        <!-- / form -->
+      </div>
     </div>
-
-    <!-- form -->
-    <form [formGroup]="form" (ngSubmit)="onFormSubmit()">
-      <!-- username -->
-      <mat-form-field appearance="fill">
-        <mat-label>Usuario</mat-label>
-        <input type="text" required matInput formControlName="username" />
-        <mat-icon matSuffix>email</mat-icon>
-        <mat-error>Este campo es requerido.</mat-error>
-      </mat-form-field>
-      <!-- / username -->
-
-      <!-- password -->
-      <mat-form-field appearance="fill">
-        <mat-label>Contraseña</mat-label>
-        <input
-          [type]="hide ? 'password' : 'text'"
-          required
-          matInput
-          formControlName="password"
-        />
-        <button
-          type="button"
-          mat-icon-button
-          matSuffix
-          (click)="togglePasswordVisibility()"
-        >
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
-        <mat-error>Este campo es requerido.</mat-error>
-      </mat-form-field>
-      <!-- / password -->
-
-      <!-- button -->
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        class="dev-login_button"
-        [disabled]="loading"
-      >
-        Ingresar
-      </button>
-      <!-- / button -->
-    </form>
-    <!-- / form -->
   </div>
 </div>
