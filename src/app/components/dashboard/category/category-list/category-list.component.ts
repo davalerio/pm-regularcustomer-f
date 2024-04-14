@@ -35,7 +35,6 @@ export class CategoryListComponent implements OnInit {
   ngOnInit(): void {
     this.loadCategories();
     this._matPaginatorIntl.itemsPerPageLabel = 'Registros por página';
-    this.dialogAddOrEdit()
   }
 
   loadCategories() {

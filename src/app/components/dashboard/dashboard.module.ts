@@ -22,6 +22,7 @@ import { PointListComponent } from './point/point-list/point-list.component';
 import { PointCreateComponent } from './point/point-create/point-create.component';
 import { PointViewComponent } from './point/point-view/point-view.component';
 import { PointProfileComponent } from './point/point-profile/point-profile.component';
+import { CategoryDeleteComponent } from './category/category-delete/category-delete.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { PointProfileComponent } from './point/point-profile/point-profile.compo
     PointListComponent,
     PointCreateComponent,
     PointViewComponent,
-    PointProfileComponent
+    PointProfileComponent,
+    CategoryDeleteComponent
   ],
   imports: [
     CommonModule,
