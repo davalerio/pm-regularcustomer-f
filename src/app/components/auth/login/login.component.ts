@@ -39,7 +39,7 @@ export class LoginComponent {
     this._router.navigate(['/dashboard']);
     this._snackBar.open('Bienvenido', 'Cerrar', {
       duration: 2000,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       horizontalPosition: 'center',
     });
     this.loading = false;

@@ -70,7 +70,7 @@ export class CategoryListComponent implements OnInit {
       this._snackBar.open(`${this.title} eliminada`, 'Cerrar', {
         duration: 2000,
         horizontalPosition: 'center',
-        verticalPosition: 'top'
+        verticalPosition: 'bottom'
       });
       this.loading = false;
       this.loadCategories();

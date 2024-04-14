@@ -20,8 +20,9 @@ export class ItemListComponent implements OnInit {
   title: string = 'Premios ';
   listRecords: IItem[] = [];
   loading: boolean = false;
+  isDisabled: boolean = true;
 
-  displayedColumns: string[] = ['index', 'item_category_id', 'name', 'description', 'status', 'actions'];
+  displayedColumns: string[] = ['item_category_id', 'name', 'description', 'status', 'actions'];
   dataSource!: MatTableDataSource<IItem>;
 
   constructor(
@@ -43,6 +44,7 @@ export class ItemListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.loading = false;
+      this.isDisabled = false;
     });
   }
 
@@ -68,7 +70,7 @@ export class ItemListComponent implements OnInit {
       this._snackBar.open(`${this.title} eliminada`, 'Cerrar', {
         duration: 2000,
         horizontalPosition: 'center',
-        verticalPosition: 'top'
+        verticalPosition: 'bottom'
       });
       this.loading = false;
       this.loadItems();

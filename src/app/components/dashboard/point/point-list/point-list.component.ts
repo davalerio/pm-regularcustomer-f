@@ -19,8 +19,9 @@ export class PointListComponent implements OnInit {
   title: string = 'Puntos ';
   listRecords: IPointCustomer[] = [];
   loading: boolean = false;
+  isDisabled: boolean = true;
 
-  displayedColumns: string[] = ['index', 'fullname', 'type_document_id', 'document', 'actions'];
+  displayedColumns: string[] = ['fullname', 'type_document_id', 'document', 'actions'];
   dataSource!: MatTableDataSource<IPointCustomer>;
 
   constructor(
@@ -40,6 +41,7 @@ export class PointListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.loading = false;
+      this.isDisabled = false;
     });
   }
 

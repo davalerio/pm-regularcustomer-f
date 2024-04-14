@@ -1,11 +1,22 @@
-.container {
-  display: flex;
-}
-
-mat-spinner {
-  top: 18px;
-}
+.form-dialog {}
 
 mat-form-field {
   width: 100%;
+}
+
+button {
+  letter-spacing: normal;
+}
+
+.title-spinner {
+  display: flex;
+  align-items: center;
+}
+
+mat-dialog-content {
+  padding: 0 24px;
+}
+
+mat-dialog-actions {
+  padding: 0px 24px;
 }

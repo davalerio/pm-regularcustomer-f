@@ -19,8 +19,9 @@ export class CustomerListComponent implements OnInit {
   title: string = 'Clientes ';
   listRecords: ICustomer[] = [];
   loading: boolean = false;
+  isDisabled: boolean = true;
 
-  displayedColumns: string[] = ['index', 'fullname', 'document', 'email', 'phone', 'actions'];
+  displayedColumns: string[] = ['fullname', 'document', 'email', 'phone'];
   dataSource!: MatTableDataSource<ICustomer>;
 
   constructor(
@@ -43,6 +44,7 @@ export class CustomerListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.loading = false;
+      this.isDisabled = false;
     });
   }
 

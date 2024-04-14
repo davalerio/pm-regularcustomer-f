@@ -5,81 +5,74 @@
 ></mat-progress-bar>
 <div class="content-wrapper">
   <div class="row">
-    <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-      <h3 class="font-weight-bold">Tabla {{ title }}</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <!-- Filter -->
-      <mat-form-field appearance="outline">
-        <input
-          type="text"
-          matInput
-          (keyup)="applyFilter($event)"
-          #input
-          matTooltip="Buscar por nombre"
-        />
-        <button
-          type="button"
-          mat-icon-button
-          matSuffix
-          (click)="(onSearch)"
-          color="primary"
-        >
-          <span class="material-symbols-rounded"> search </span>
-        </button>
-      </mat-form-field>
-      <!-- / Filter -->
-    </div>
-    <div class="col-6 d-flex justify-content-end">
-      <mat-card-content>
+    <div class="col-md-12">
+      <div class="action-bar">
+        <!-- Filter -->
+        <div class="icon-filter">
+          <button type="button" mat-icon-button matSuffix (click)="(onSearch)">
+            <span class="material-symbols-rounded"> search </span>
+          </button>
+          <input
+            type="text"
+            class="input-filter"
+            placeholder="Buscar"
+            matTooltip="Ingresar un texto para buscar"
+            (keyup)="applyFilter($event)"
+            #input
+          />
+        </div>
+        <!-- / Filter -->
         <div>
           <button
-            mat-mini-fab
-            color="accent"
-            class="button-action"
+            type="button"
+            mat-icon-button
+            matSuffix
             matTooltip="Agregar {{ title }}"
+            [disabled]="isDisabled"
           >
             <span class="material-symbols-rounded"> add_circle </span>
           </button>
+
           <button
-            mat-mini-fab
-            color="accent"
-            class="button-action"
-            matTooltip="Filtrar Columna"
+            type="button"
+            mat-icon-button
+            matSuffix
+            matTooltip="Filtrar columna"
+            [disabled]="isDisabled"
           >
             <span class="material-symbols-rounded"> visibility </span>
           </button>
+
           <button
-            mat-mini-fab
-            color="warn"
-            class="button-action"
-            matTooltip="Eliminar {{ title }}"
+            type="button"
+            mat-icon-button
+            matSuffix
+            matTooltip="Eliminar"
+            [disabled]="isDisabled"
           >
             <span class="material-symbols-rounded"> delete </span>
           </button>
+
           <button
-            mat-mini-fab
-            color="accent"
-            class="button-action"
+            type="button"
+            mat-icon-button
+            matSuffix
             matTooltip="Reportes"
+            [disabled]="isDisabled"
           >
             <span class="material-symbols-rounded"> more_vert </span>
           </button>
         </div>
-      </mat-card-content>
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12 mb-4">
       <div class="table">
+        <div style="padding: 1.5rem">
+          <h3 class="font-weight-bold">{{ title }}</h3>
+        </div>
         <table mat-table [dataSource]="dataSource" matSort>
-          <ng-container matColumnDef="index">
-            <th mat-header-cell *matHeaderCellDef>No.</th>
-            <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
-          </ng-container>
-
           <ng-container matColumnDef="fullname">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>
               Nombre completo
@@ -111,37 +104,12 @@
             <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
           </ng-container>
 
-          <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef>Acción</th>
-            <td mat-cell *matCellDef="let element; let i = index">
-              <a
-                class="pointer"
-                matTooltip="Editar {{ title }}"
-                style="cursor: pointer; margin-right: 10px"
-              >
-                <span class="material-symbols-rounded" style="color: #000">
-                  edit
-                </span>
-              </a>
-
-              <a
-                class="pointer"
-                matTooltip="Eliminar {{ title }}"
-                style="cursor: pointer; margin-left: 10px"
-              >
-                <span class="material-symbols-rounded" style="color: #000">
-                  delete
-                </span>
-              </a>
-            </td>
-          </ng-container>
-
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
 
         <mat-paginator
-          [pageSizeOptions]="[5, 10, 20]"
+          [pageSizeOptions]="[10, 20]"
           showFirstLastButtons
           aria-label="Select page of periodic elements"
         >
