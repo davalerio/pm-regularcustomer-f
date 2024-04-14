@@ -7,6 +7,7 @@ import { ItemComponent } from './item/item.component';
 import { PointComponent } from './point/point.component';
 import { PointViewComponent } from './point/point-view/point-view.component';
 import { CustomerComponent } from './customer/customer.component';
+import { LoginComponent } from '../auth/login/login.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,6 @@ const routes: Routes = [
       { path: 'points', component: PointComponent },
       { path: 'points/document/:document', component: PointViewComponent },
       { path: 'customers', component: CustomerComponent },
-      { path: 'reports', component: CustomerComponent },
     ],
   },
 ];

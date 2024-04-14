@@ -20,7 +20,7 @@ export class PointListComponent implements OnInit {
   listRecords: IPointCustomer[] = [];
   loading: boolean = false;
 
-  displayedColumns: string[] = ['index', 'fullname', 'type_document_id', 'document', 'points', 'actions'];
+  displayedColumns: string[] = ['index', 'fullname', 'type_document_id', 'document', 'actions'];
   dataSource!: MatTableDataSource<IPointCustomer>;
 
   constructor(
@@ -52,4 +52,7 @@ export class PointListComponent implements OnInit {
     }
   }
 
+  onSearch() {
+
+  }
 }
