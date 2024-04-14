@@ -1,26 +1,44 @@
-<div class="container">
-  <h2 mat-dialog-title>{{ operation }}</h2>
-  <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+<div class="form-dialog">
+  <div class="title-spinner">
+    <h2 style="color: #4c5e70" mat-dialog-title>{{ operation }}</h2>
+    <!-- <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner> -->
+  </div>
+  <form [formGroup]="form" (ngSubmit)="formAddOrEdit()">
+    <mat-dialog-content>
+      <!-- categoria -->
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre categoria</mat-label>
+        <input type="text" matInput formControlName="name" />
+        <mat-error *ngIf="form.get('name')?.hasError('required')"
+          >Este campo es requerido.</mat-error
+        >
+      </mat-form-field>
+      <!-- / categoria -->
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button
+        type="button"
+        color="warn"
+        mat-raised-button
+        (click)="dialogClose()"
+        [disabled]="loading"
+      >
+        Cancelar
+      </button>
+      <button
+        type="submit"
+        color="accent"
+        mat-raised-button
+        [disabled]="loading"
+        [disabled]="!form.valid"
+      >
+        Guardar
+      </button>
+    </mat-dialog-actions>
+    <mat-progress-bar
+      *ngIf="loading"
+      mode="indeterminate"
+      color="accent"
+    ></mat-progress-bar>
+  </form>
 </div>
-
-<form [formGroup]="form" (ngSubmit)="formAddOrEdit()">
-  <mat-dialog-content>
-    <div class="row">
-      <div class="colum">
-        <!-- categoria -->
-        <mat-form-field appearance="fill">
-          <mat-label>Nombre categoria</mat-label>
-          <input type="text" matInput formControlName="name" />
-          <mat-error *ngIf="form.get('name')?.hasError('required')"
-            >Este campo es requerido.</mat-error
-          >
-        </mat-form-field>
-        <!-- / categoria -->
-      </div>
-    </div>
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button type="button" color="accent" mat-raised-button (click)="dialogClose()" [disabled]="loading">Cancelar</button>
-    <button type="submit" color="primary" mat-raised-button [disabled]="loading" [disabled]="!form.valid">Guardar</button>
-  </mat-dialog-actions>
-</form>

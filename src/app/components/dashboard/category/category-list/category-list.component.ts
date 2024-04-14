@@ -20,8 +20,9 @@ export class CategoryListComponent implements OnInit {
   title: string = 'Categoria ';
   listRecords: ICategory[] = [];
   loading: boolean = false;
+  isDisabled: boolean = true;
 
-  displayedColumns: string[] = ['index', 'name', 'status', 'actions'];
+  displayedColumns: string[] = ['name', 'status', 'actions'];
   dataSource!: MatTableDataSource<ICategory>;
 
   constructor(
@@ -34,6 +35,7 @@ export class CategoryListComponent implements OnInit {
   ngOnInit(): void {
     this.loadCategories();
     this._matPaginatorIntl.itemsPerPageLabel = 'Registros por página';
+    this.dialogAddOrEdit()
   }
 
   loadCategories() {
@@ -43,6 +45,7 @@ export class CategoryListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.loading = false;
+      this.isDisabled = false;
     });
   }
 
