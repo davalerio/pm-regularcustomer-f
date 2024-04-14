@@ -54,15 +54,15 @@ export class PointViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPointsxCliente();
-    // this.loading = true;
-    // this._activedRoute.params.subscribe((params) => {
-    //   this._pointService.getPointsDocument(params['document']).subscribe({
-    //     next: (res: any) => {
-    //       this.pointsCustomer.set(res);
-    //       this.loading = false;
-    //     },
-    //   });
-    // });
+    this.loading = true;
+    this._activedRoute.params.subscribe((params) => {
+      this._pointService.getPointsDocument(params['document']).subscribe({
+        next: (res: any) => {
+          this.pointsCustomer.set(res);
+          this.loading = false;
+        },
+      });
+    });
   }
 
   loadPointsxCliente() {
