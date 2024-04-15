@@ -30,6 +30,7 @@ export class ItemCreateEditComponent implements OnInit {
       item_category_id: ['', [Validators.required]],
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
+      point_value: ['', [Validators.required]],
     });
 
     this.id = data.item_id;
@@ -52,7 +53,8 @@ export class ItemCreateEditComponent implements OnInit {
       this.form.setValue({
         item_category_id: data.item_category_id,
         name: data.name,
-        description: data.description
+        description: data.description,
+        point_value: data.point_value,
       })
       this.loading = false
     })
@@ -62,7 +64,8 @@ export class ItemCreateEditComponent implements OnInit {
     const item: IItem = {
       item_category_id: this.form.value.item_category_id,
       name: this.form.value.name,
-      description: this.form.value.description
+      description: this.form.value.description,
+      point_value: this.form.value.point_value,
     }
 
     if (this.form.invalid) {
@@ -78,7 +81,7 @@ export class ItemCreateEditComponent implements OnInit {
           this._snackBar.open(`${this.title} actualizado`, 'Cerrar', {
             duration: 2000,
             horizontalPosition: 'center',
-            verticalPosition: 'top',
+            verticalPosition: 'bottom',
           })
           this._dialogRef.close(true);
           this.loading = false

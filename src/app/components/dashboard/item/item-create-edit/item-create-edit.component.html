@@ -31,16 +31,26 @@
         >
       </mat-form-field>
       <!-- / description -->
+
+      <!-- point value -->
+      <mat-form-field appearance="outline">
+        <mat-label>Valor</mat-label>
+        <input type="text" matInput formControlName="point_value" />
+        <mat-error *ngIf="form.get('point_value')?.hasError('required')"
+          >Este campo es requerido.</mat-error
+        >
+      </mat-form-field>
+      <!-- / point value -->
     </mat-dialog-content>
     <mat-dialog-actions align="end">
       <button
         type="button"
-        color="warm"
+        color="warn"
         mat-raised-button
         (click)="dialogClose()"
         [disabled]="loading"
       >
-        Cancelar
+        Cerrar
       </button>
       <button
         type="submit"

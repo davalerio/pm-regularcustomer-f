@@ -3,5 +3,6 @@ export interface IItem {
   item_category_id: string;
   name: string;
   description: string;
+  point_value: number;
   status?: string;
 }

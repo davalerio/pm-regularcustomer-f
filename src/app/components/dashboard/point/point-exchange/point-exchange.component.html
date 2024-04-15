@@ -1,0 +1,65 @@
+<div class="form-dialog">
+  <div class="title-spinner">
+    <h2 style="color: #4c5e70" mat-dialog-title>Productos</h2>
+  </div>
+  <form>
+    <mat-dialog-content>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Categoria</mat-label>
+            <mat-select>
+              <mat-option>Categorias</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12">
+          <mat-form-field appearance="outline">
+            <mat-label>Productos</mat-label>
+            <mat-select>
+              <mat-option>Productos</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <input type="text" matInput />
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Puntos</mat-label>
+            <input type="text" matInput />
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button
+        type="button"
+        color="warn"
+        mat-raised-button
+        (click)="dialogClose()"
+      >
+        Cerrar
+      </button>
+      <button
+        type="submit"
+        color="accent"
+        mat-raised-button
+        [disabled]="loading"
+        [disabled]="!form.valid"
+      >
+        Guardar
+      </button>
+    </mat-dialog-actions>
+    <mat-progress-bar
+      *ngIf="loading"
+      mode="indeterminate"
+      color="accent"
+    ></mat-progress-bar>
+  </form>
+</div>

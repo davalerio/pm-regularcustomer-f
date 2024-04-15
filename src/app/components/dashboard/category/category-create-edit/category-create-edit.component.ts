@@ -72,7 +72,7 @@ export class CategoryCreateEditComponent implements OnInit {
           this._snackBar.open(`${this.title} actualizado`, 'Cerrar', {
             duration: 2000,
             horizontalPosition: 'center',
-            verticalPosition: 'top',
+            verticalPosition: 'bottom',
           })
           this._dialogRef.close(true);
           this.loading = false

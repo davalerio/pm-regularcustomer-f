@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { IPoint } from 'src/app/interfaces/point.interface';
 import { ICustomer } from 'src/app/interfaces/customer.interface';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PointExchangeComponent } from '../point-exchange/point-exchange.component';
 
 @Component({
   selector: 'app-point-view',
@@ -96,6 +97,19 @@ export class PointViewComponent implements OnInit {
       }
     });
     console.log(document);
+
+    dialogRef.afterClosed().subscribe((data: any) => {
+      if (data) {
+        this.loadPointsCustomer();
+      }
+    });
+  }
+
+  dialogExchangePoint() {
+    const dialogRef = this._dialog.open(PointExchangeComponent, {
+      width: '500px',
+      disableClose: true
+    });
 
     dialogRef.afterClosed().subscribe((data: any) => {
       if (data) {

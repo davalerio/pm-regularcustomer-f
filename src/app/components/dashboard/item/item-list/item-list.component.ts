@@ -22,7 +22,7 @@ export class ItemListComponent implements OnInit {
   loading: boolean = false;
   isDisabled: boolean = true;
 
-  displayedColumns: string[] = ['item_category_id', 'name', 'description', 'status', 'actions'];
+  displayedColumns: string[] = ['item_category_id', 'name', 'description', 'point_value', 'status', 'actions'];
   dataSource!: MatTableDataSource<IItem>;
 
   constructor(
