@@ -1,13 +1,13 @@
 export interface ICustomer {
   person_id?: string;
-  document: number;
+  document: string;
   firstname: string;
   second_name: string;
   lastname: string;
   lastname_mother: string;
   birthdate: Date;
   email: string;
-  phone: number;
+  phone: string;
   ubigeo: string;
   address: string;
 }

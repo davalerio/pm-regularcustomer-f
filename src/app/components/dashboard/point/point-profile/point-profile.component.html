@@ -1,143 +1,183 @@
-<form [formGroup]="form" (ngSubmit)="formAddOrEdit()">
-  <mat-dialog-content>
-    <div class="row">
-      <div class="column">
-        <h2 class="form-title">Información del cliente</h2>
+<div class="form-dialog">
+  <div class="title-spinner">
+    <h2 style="color: #4c5e70" mat-dialog-title>Información</h2>
+  </div>
+  <!-- form -->
+  <form [formGroup]="form">
+    <mat-dialog-content>
+      <div class="row">
+        <div class="col-md-6">
+          <!-- firstname -->
+          <mat-form-field appearance="outline">
+            <mat-label>Primer nombre</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="firstname"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / firstname -->
+        </div>
+        <div class="col-md-6">
+          <!-- second_name -->
+          <mat-form-field appearance="outline">
+            <mat-label>Segundo nombre</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="second_name"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Segundo nombre -->
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="column">
-        <!-- Primer nombre -->
-        <div class="form-field">
-          <label for="firstname" class="form-label">Primer nombre</label>
-          <input
-            type="text"
-            class="form-input"
-            formControlName="firstname"
-            [value]=""
-            [readOnly]="isReadOnly"
-          />
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Apellido paterno -->
+          <mat-form-field appearance="outline">
+            <mat-label>Apellido paterno</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="lastname"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Apellido paterno -->
         </div>
-        <!-- / Primer nombre -->
-        <!-- Segundo nombre -->
-        <div class="form-field">
-          <label for="second_name" class="form-label">Segundo nombre</label>
-          <input type="text" class="form-input" formControlName="second_name" />
+        <div class="col-md-6">
+          <!-- Apellido materno -->
+          <mat-form-field appearance="outline">
+            <mat-label>Apellido materno</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="lastname_mother"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Apellido Materno -->
         </div>
-        <!-- / Segundo nombre -->
       </div>
-      <div class="column">
-        <!-- Apellido paterno -->
-        <div class="form-field">
-          <label for="lastname" class="form-label">Apellido paterno</label>
-          <input type="text" class="form-input" formControlName="lastname" />
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Tipo documento -->
+          <mat-form-field appearance="outline">
+            <mat-label>Número documento</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="type_document"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Tipo documento -->
         </div>
-        <!-- / Apellido paterno -->
-        <!-- Apellido materno -->
-        <div class="form-field">
-          <label for="lastname_mother" class="form-label"
-            >Apellido materno</label
-          >
-          <input
-            type="text"
-            class="form-input"
-            formControlName="lastname_mother"
-          />
+        <div class="col-md-6">
+          <!-- Numero documento -->
+          <mat-form-field appearance="outline">
+            <mat-label>Número documento</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="document"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Numero documento -->
         </div>
-        <!-- / Apellido Materno -->
       </div>
-      <div class="column">
-        <!-- Tipo documento -->
-        <div class="form-field">
-          <label for="type_document" class="form-label">Tipo documento</label>
-          <input
-            type="text"
-            class="form-input"
-            formControlName="type_document"
-          />
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Fecha nacimiento -->
+          <mat-form-field appearance="outline">
+            <mat-label>Cumpleaños</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="birthdate"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Fecha nacimiento -->
         </div>
-        <!-- / Tipo documento -->
-        <!-- Numero documento -->
-        <div class="form-field">
-          <label for="document" class="form-label">Número documento</label>
-          <input type="text" class="form-input" formControlName="document" />
+        <div class="col-md-6">
+          <!-- Telefono -->
+          <mat-form-field appearance="outline">
+            <mat-label>Celular</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="phone"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Telefono -->
         </div>
-        <!-- / Numero documento -->
       </div>
-      <div class="column">
-        <!-- Fecha nacimiento -->
-        <div class="form-field">
-          <label for="birthdate" class="form-label">Cumpleaños</label>
-          <input type="text" class="form-input" formControlName="birthdate" />
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Correo electronico-->
+          <mat-form-field appearance="outline">
+            <mat-label>Correo electrónico</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="email"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Correo electronico-->
         </div>
-        <!-- / Fecha nacimiento -->
-        <!-- Telefono -->
-        <div class="form-field">
-          <label for="phone" class="form-label">Celular</label>
-          <input type="text" class="form-input" formControlName="phone" />
-        </div>
-        <!-- / Telefono -->
       </div>
-      <div class="column">
-        <!-- Correo electronico-->
-        <div class="form-field tag-width-full">
-          <label for="email" class="form-label tag-width-full"
-            >Correo electrónico</label
-          >
-          <input
-            type="text"
-            class="form-input tag-width-full"
-            formControlName="email"
-          />
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Ubigeo -->
+          <mat-form-field appearance="outline">
+            <mat-label>Ubigeo</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="ubigeo"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Ubigeo -->
         </div>
-        <!-- / Correo electronico-->
       </div>
-      <div class="column">
-        <!-- Ubigeo -->
-        <div class="form-field tag-width-full">
-          <label for="ubigeo" class="form-label tag-width-full">Ubigeo</label>
-          <input
-            type="text"
-            class="form-input tag-width-full"
-            formControlName="ubigeo"
-          />
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Direccion -->
+          <mat-form-field appearance="outline">
+            <mat-label>Dirección</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="address"
+              [readonly]="isReadOnly"
+            />
+          </mat-form-field>
+          <!-- / Direccion -->
         </div>
-        <!-- / Ubigeo -->
       </div>
-      <div class="column">
-        <!-- Direccion -->
-        <div class="form-field tag-width-full">
-          <label for="address" class="form-label tag-width-full"
-            >Dirección</label
-          >
-          <input
-            type="text"
-            class="form-input tag-width-full"
-            formControlName="address"
-          />
-        </div>
-        <!-- / Direccion -->
-      </div>
-    </div>
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button
-      type="button"
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button
+        type="button"
+        color="warn"
+        mat-raised-button
+        (click)="formClose()"
+      >
+        Cerrar
+      </button>
+    </mat-dialog-actions>
+    <mat-progress-bar
+      *ngIf="loading"
+      mode="indeterminate"
       color="accent"
-      mat-raised-button
-      (click)="formClose()"
-      [disabled]="loading"
-    >
-      Cancelar
-    </button>
-    <button
-      type="submit"
-      color="primary"
-      mat-raised-button
-      [disabled]="loading"
-      [disabled]="!form.valid"
-    >
-      Guardar
-    </button>
-  </mat-dialog-actions>
-</form>
+    ></mat-progress-bar>
+  </form>
+</div>

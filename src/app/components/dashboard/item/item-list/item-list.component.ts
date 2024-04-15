@@ -57,6 +57,8 @@ export class ItemListComponent implements OnInit {
       }
     });
 
+    console.log(id);
+
     dialogRef.afterClosed().subscribe((data: any) => {
       if (data) {
         this.loadItems();

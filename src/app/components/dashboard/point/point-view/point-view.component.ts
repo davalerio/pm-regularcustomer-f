@@ -9,6 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { IPoint } from 'src/app/interfaces/point.interface';
 import { ICustomer } from 'src/app/interfaces/customer.interface';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-point-view',
@@ -53,19 +54,24 @@ export class PointViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadPointsxCliente();
+    this.loadPointsCustomer();
+    this.loadTotalPointsCustomer();
+  }
+
+  loadTotalPointsCustomer() {
     this.loading = true;
     this._activedRoute.params.subscribe((params) => {
       this._pointService.getPointsDocument(params['document']).subscribe({
         next: (res: any) => {
           this.pointsCustomer.set(res);
+          console.log(res);
           this.loading = false;
         },
       });
     });
   }
 
-  loadPointsxCliente() {
+  loadPointsCustomer() {
     this.loading = true;
     this._activedRoute.params.subscribe((params) => {
       this._pointService.getRecords().subscribe({
@@ -74,7 +80,6 @@ export class PointViewComponent implements OnInit {
           this.dataSource = new MatTableDataSource(this.listPointsCustomer);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
-          console.log(this.listPointsCustomer);
           this.loading = false;
           this.isDisabled = false;
         }
@@ -82,7 +87,7 @@ export class PointViewComponent implements OnInit {
     })
   }
 
-  dialogProfile(document: string) {
+  dialogProfile(document: number) {
     const dialogRef = this._dialog.open(PointProfileComponent, {
       width: '500px',
       disableClose: true,
@@ -90,10 +95,11 @@ export class PointViewComponent implements OnInit {
         document: document
       }
     });
+    console.log(document);
 
     dialogRef.afterClosed().subscribe((data: any) => {
       if (data) {
-        console.log('Carga data en la tabla');
+        this.loadPointsCustomer();
       }
     });
   }

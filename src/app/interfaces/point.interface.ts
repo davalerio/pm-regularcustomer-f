@@ -1,6 +1,5 @@
 interface IPointCustomer {
   m_points_record_id?: string;
-  type_document_id: string;
   firstname: string;
   second_name: string;
   type_document: string;
