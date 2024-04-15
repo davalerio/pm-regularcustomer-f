@@ -21,6 +21,10 @@ export class ItemService {
     return this._httpClient.get<IItem>(`${this.endpoint}/${this.route}/${id}`);
   }
 
+  getItemByCategory(id: string): Observable<any[]> {
+    return this._httpClient.get<any[]>(`${this.endpoint}/${this.route}/category/${id}`,);
+  }
+
   createRecord(formValues: IItem): Observable<IItem> {
     return this._httpClient.post<IItem>(`${this.endpoint}/${this.route}`, formValues);
   }

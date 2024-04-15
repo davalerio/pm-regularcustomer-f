@@ -65,7 +65,7 @@ export class PointViewComponent implements OnInit {
       this._pointService.getPointsDocument(params['document']).subscribe({
         next: (res: any) => {
           this.pointsCustomer.set(res);
-          console.log(res);
+          // console.log(res);
           this.loading = false;
         },
       });
@@ -108,7 +108,10 @@ export class PointViewComponent implements OnInit {
   dialogExchangePoint() {
     const dialogRef = this._dialog.open(PointExchangeComponent, {
       width: '500px',
-      disableClose: true
+      disableClose: true,
+      data: {
+        document: document
+      }
     });
 
     dialogRef.afterClosed().subscribe((data: any) => {
